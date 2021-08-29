@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVRL Assessment</title>
+    <style>
+        :root{
+            --bar1: #7953bd;
+            --bar2: #d152a9;
+            --bar3: #fe6486;
+            --bar4: #ff8a67;
+            --bar5: #ffbe56;
+            --container: #061731;
+            --start: #008757;
+            --stop: #e21a1c;
+        }
+
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: whitesmoke;
+        }
+        .wrapper{
+            margin-top: 2em;
+            width: 700px;
+            padding: 5px;
+        }
+        /* container for bars */
+        .main-showcase-container{
+            background-color: var(--container);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 10px;
+            height: 220px;
+        }
+        /* all bars */
+        .bars{
+            flex: 1;
+            height: 200px;
+            transition: .3s ease-in-out;
+        }
+        /* individual bars */
+        #bar1{
+            background-color: var(--bar1);
+        }
+        #bar2{
+            background-color: var(--bar2);
+        }
+        #bar3{
+            background-color: var(--bar3);
+        }
+        #bar4{
+            background-color: var(--bar4);
+        }
+        #bar5{
+            background-color: var(--bar5);
+        }
+        /* container for buttons */
+        .button-container{
+            padding:20px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        /* all buttons */
+        .str-btn, 
+        .stp-btn{
+            padding: 4px 20px;
+            color: whitesmoke;
+            border: 2px solid;
+            border-radius: 2px;
+            text-transform: capitalize;
+            font-family:  monospace;
+            cursor: pointer;
+        }
+        .str-btn:hover, 
+        .stp-btn:hover{
+            border-radius: 2px;
+            border: 2px solid rgb(0, 89, 255);
+        }
+        /* individual buttons */
+        #start{
+            background-color: var(--start);
+        }
+        #stop{
+            background-color: var(--stop);
+        }
+        /* animation for bars */
+        @keyframes barstocks {
+            0% {height: 200px;}
+            50%{height: 10px;}
+            100%{height: 200px;}
+        }
+        /* all media queries */
+        @media screen and (max-width:850px) {
+            .wrapper{
+                width: 500px;
+            }
+        }
+
+        @media screen and (max-width:450px) {
+            .wrapper{
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main-showcase-container">
+            <div id="bar1" class="bars"></div>
+            <div id="bar2" class="bars"></div>
+            <div id="bar3" class="bars"></div>
+            <div id="bar4" class="bars"></div>
+            <div id="bar5" class="bars"></div>
+        </div>
+        <div class="button-container">
+            <div id="start" class="str-btn" onclick="startAnimation()">start</div>
+            <div id="stop" class="stp-btn" onclick="stopAnimation()">stop</div>
+        </div>
+    </div>
+    <script>
+        // get all required dom element (i.e buttons , bars)
+        let startBtn = document.getElementById('start');
+        let barOne = document.getElementById('bar1');
+        let barTwo = document.getElementById('bar2');
+        let barThree = document.getElementById('bar3');
+        let barFour = document.getElementById('bar4');
+        let barFive = document.getElementById('bar5');
+        let stopBtn = document.getElementById('stop');
+
+        // to start animation
+        const startAnimation = () => {
+            barOne.style.animation ='barstocks 5s linear .5s infinite';
+            barTwo.style.animation = 'barstocks 6s reverse .5s infinite';
+            barThree.style.animation = 'barstocks 10s linear .2s infinite';
+            barFour.style.animation = 'barstocks 4s reverse .5s infinite';
+            barFive.style.animation = 'barstocks 8s alternate-reverse .5s infinite';
+            startBtn.style.border = '2px solid rgb(0, 89, 255)';
+            stopBtn.style.border = '2px solid';
+
+        }
+        // to stop animation
+        const stopAnimation = () => {
+            barOne.style.animation = 'none';
+            barTwo.style.animation = 'none';
+            barThree.style.animation = 'none';
+            barFour.style.animation = 'none';
+            barFive.style.animation = 'none';
+            stopBtn.style.border = '2px solid rgb(0, 89, 255)';
+            startBtn.style.border = '2px solid';
+        }  
+    </script>
+</body>
+</html>
